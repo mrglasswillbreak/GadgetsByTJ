@@ -1,10 +1,10 @@
 # GadgetsByTJ
 
-Your premier destination for mobile electronics and accessories. Built with Next.js 14 App Router.
+Your premier destination for mobile electronics and accessories. Built with Next.js 15 App Router.
 
 ## Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Animation**: Framer Motion
