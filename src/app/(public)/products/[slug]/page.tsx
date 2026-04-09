@@ -18,8 +18,9 @@ const products = [
   { id: 12, name: 'Samsung Galaxy Tab S9', price: '$699.99', category: 'Tablets', slug: 'samsung-galaxy-tab-s9', emoji: '💻', description: 'Samsung Galaxy Tab S9 with Dynamic AMOLED 2X display and S Pen included.', specs: { Processor: 'Snapdragon 8 Gen 2', Display: '11" Dynamic AMOLED 2X', Storage: '128GB - 256GB', Camera: '13MP + 12MP', Battery: '8400mAh', OS: 'Android 13' } },
 ];
 
-export default function ProductDetailPage({ params }: { params: { slug: string } }) {
-  const product = products.find((p) => p.slug === params.slug);
+export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const product = products.find((p) => p.slug === slug);
 
   if (!product) {
     return (

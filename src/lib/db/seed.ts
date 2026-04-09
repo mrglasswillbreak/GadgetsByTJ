@@ -9,10 +9,16 @@ async function seed() {
 
   console.log('🌱 Seeding database...');
 
-  // Admin
-  const passwordHash = await bcrypt.hash('Admin1234!', 12);
+  // Admin — credentials must be provided via environment variables
+  const adminEmail = process.env.SEED_ADMIN_EMAIL;
+  const adminPassword = process.env.SEED_ADMIN_PASSWORD;
+  if (!adminEmail || !adminPassword) {
+    console.error('❌ SEED_ADMIN_EMAIL and SEED_ADMIN_PASSWORD env vars are required to seed an admin account.');
+    process.exit(1);
+  }
+  const passwordHash = await bcrypt.hash(adminPassword, 12);
   await db.insert(schema.admins).values({
-    email: 'admin@gadgetsbytj.com',
+    email: adminEmail,
     passwordHash,
   }).onConflictDoNothing();
   console.log('✅ Admin seeded');

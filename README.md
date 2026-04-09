@@ -42,17 +42,12 @@ BLOB_READ_WRITE_TOKEN=your-blob-token-here
 npx drizzle-kit push
 ```
 
-### 4. Create the first admin user
+### 4. Seed the database (sample data + first admin)
 
-Run the following in a Node.js REPL or a setup script to seed an admin:
+Set the admin credentials in env vars and run the seed script:
 
-```typescript
-import bcrypt from 'bcryptjs';
-import { db } from './src/lib/db';
-import { admins } from './src/lib/db/schema';
-
-const hash = await bcrypt.hash('your-password', 12);
-await db.insert(admins).values({ email: 'admin@example.com', passwordHash: hash });
+```bash
+SEED_ADMIN_EMAIL=admin@example.com SEED_ADMIN_PASSWORD=yourpassword npx tsx src/lib/db/seed.ts
 ```
 
 ### 5. Start the development server

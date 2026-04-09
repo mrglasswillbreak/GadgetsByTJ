@@ -82,6 +82,9 @@ function DeleteCategoryButton({ id, name }: { id: number; name: string }) {
     <form
       action={async () => {
         'use server';
+        const { auth } = await import('@/lib/auth/config');
+        const session = await auth();
+        if (!session?.user) return;
         try {
           const { db } = await import('@/lib/db');
           const { categories } = await import('@/lib/db/schema');

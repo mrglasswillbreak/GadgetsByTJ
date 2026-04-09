@@ -1,4 +1,5 @@
 import { pgTable, text, integer, boolean, timestamp, serial, decimal, jsonb } from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
 
 export const admins = pgTable('admins', {
   id: serial('id').primaryKey(),
@@ -73,3 +74,31 @@ export type Product = typeof products.$inferSelect;
 export type Device = typeof devices.$inferSelect;
 export type GalleryImage = typeof galleryImages.$inferSelect;
 export type SiteSetting = typeof siteSettings.$inferSelect;
+
+// Relations
+export const categoriesRelations = relations(categories, ({ many }) => ({
+  products: many(products),
+}));
+
+export const productsRelations = relations(products, ({ one, many }) => ({
+  category: one(categories, {
+    fields: [products.categoryId],
+    references: [categories.id],
+  }),
+  galleryImages: many(galleryImages),
+}));
+
+export const devicesRelations = relations(devices, ({ many }) => ({
+  galleryImages: many(galleryImages),
+}));
+
+export const galleryImagesRelations = relations(galleryImages, ({ one }) => ({
+  product: one(products, {
+    fields: [galleryImages.productId],
+    references: [products.id],
+  }),
+  device: one(devices, {
+    fields: [galleryImages.deviceId],
+    references: [devices.id],
+  }),
+}));

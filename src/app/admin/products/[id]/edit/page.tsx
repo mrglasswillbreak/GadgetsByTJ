@@ -36,8 +36,8 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function EditProductPage({ params }: { params: { id: string } }) {
-  const id = Number(params.id);
+export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
+  const id = Number((await params).id);
   if (isNaN(id)) notFound();
 
   const [product, categories] = await Promise.all([getProduct(id), getCategories()]);

@@ -118,6 +118,9 @@ function DeleteDeviceButton({ id, name }: { id: number; name: string }) {
     <form
       action={async () => {
         'use server';
+        const { auth } = await import('@/lib/auth/config');
+        const session = await auth();
+        if (!session?.user) return;
         try {
           const { db } = await import('@/lib/db');
           const { devices } = await import('@/lib/db/schema');

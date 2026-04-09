@@ -26,8 +26,8 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function EditDevicePage({ params }: { params: { id: string } }) {
-  const id = Number(params.id);
+export default async function EditDevicePage({ params }: { params: Promise<{ id: string }> }) {
+  const id = Number((await params).id);
   if (isNaN(id)) notFound();
   const device = await getDevice(id);
   if (!device) notFound();

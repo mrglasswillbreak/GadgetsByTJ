@@ -10,7 +10,7 @@ async function getProducts() {
   try {
     return await db.query.products.findMany({
       orderBy: (p, { desc }) => [desc(p.createdAt)],
-      with: { category: true } as never,
+      with: { category: true },
     });
   } catch {
     return [];
@@ -18,15 +18,7 @@ async function getProducts() {
 }
 
 export default async function ProductsPage() {
-  const products = await getProducts() as Array<{
-    id: number;
-    name: string;
-    imageUrl: string | null;
-    price: string | null;
-    inStock: boolean;
-    featured: boolean;
-    category?: { name: string } | null;
-  }>;
+  const products = await getProducts();
 
   return (
     <div className="space-y-6">
@@ -154,6 +146,9 @@ function DeleteProductButton({ id, name }: { id: number; name: string }) {
     <form
       action={async () => {
         'use server';
+        const { auth } = await import('@/lib/auth/config');
+        const session = await auth();
+        if (!session?.user) return;
         try {
           const { db } = await import('@/lib/db');
           const { products } = await import('@/lib/db/schema');

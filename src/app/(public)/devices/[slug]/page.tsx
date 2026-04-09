@@ -23,8 +23,9 @@ const compatibleProducts = [
   { id: 5, name: 'USB-C Fast Charger 65W', price: '$29.99', category: 'Chargers', slug: 'usbc-fast-charger-65w', emoji: '⚡' },
 ];
 
-export default function DeviceDetailPage({ params }: { params: { slug: string } }) {
-  const device = devices.find((d) => d.slug === params.slug);
+export default async function DeviceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const device = devices.find((d) => d.slug === slug);
 
   if (!device) {
     return (
