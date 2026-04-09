@@ -28,7 +28,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     const body = await req.json();
     const parsed = DeviceSchema.partial().safeParse(body);
     if (!parsed.success) {
-      return NextResponse.json({ error: parsed.error.errors[0]?.message ?? 'Validation error' }, { status: 400 });
+      return NextResponse.json({ error: parsed.error.issues[0]?.message ?? 'Validation error' }, { status: 400 });
     }
     const [updated] = await db.update(devices).set({ ...parsed.data, updatedAt: new Date() }).where(eq(devices.id, id)).returning();
     if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 });

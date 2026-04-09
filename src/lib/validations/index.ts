@@ -8,7 +8,7 @@ export const ProductSchema = z.object({
   categoryId: z.number().int().nullable().optional(),
   imageUrl: z.string().url().nullable().optional(),
   images: z.array(z.string().url()).optional(),
-  specs: z.record(z.string()).optional(),
+  specs: z.record(z.string(), z.string()).optional(),
   inStock: z.boolean().optional(),
   featured: z.boolean().optional(),
   displayOrder: z.number().int().optional(),
@@ -29,7 +29,7 @@ export const DeviceSchema = z.object({
   deviceType: z.string().min(1, 'Device type is required'),
   description: z.string().nullable().optional(),
   imageUrl: z.string().url().nullable().optional(),
-  specs: z.record(z.string()).optional(),
+  specs: z.record(z.string(), z.string()).optional(),
   featured: z.boolean().optional(),
   displayOrder: z.number().int().optional(),
 });
@@ -43,5 +43,5 @@ export const GalleryImageSchema = z.object({
 });
 
 export const SettingsBatchSchema = z.object({
-  settings: z.record(z.string()),
+  settings: z.record(z.string(), z.string()),
 });

@@ -35,7 +35,10 @@ export default async function EditCategoryPage({ params }: { params: { id: strin
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-semibold text-gray-900">Edit Category</h2>
-      <CategoryForm initialData={category} categoryId={id} />
+      <CategoryForm
+        initialData={{ ...category, displayOrder: category.displayOrder ?? 0 }}
+        categoryId={id}
+      />
     </div>
   );
 }

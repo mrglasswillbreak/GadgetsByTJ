@@ -35,7 +35,15 @@ export default async function EditDevicePage({ params }: { params: { id: string 
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-semibold text-gray-900">Edit Device</h2>
-      <DeviceForm initialData={device} deviceId={id} />
+      <DeviceForm
+        initialData={{
+          ...device,
+          specs: device.specs ?? {},
+          featured: device.featured ?? false,
+          displayOrder: device.displayOrder ?? 0,
+        }}
+        deviceId={id}
+      />
     </div>
   );
 }

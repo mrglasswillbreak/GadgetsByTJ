@@ -9,7 +9,8 @@ export const metadata: Metadata = {
 
 async function getCategories(): Promise<Category[]> {
   try {
-    return await db.query.categories.findMany({ orderBy: (c, { asc }) => [asc(c.name)] });
+    const rows = await db.query.categories.findMany({ orderBy: (c, { asc }) => [asc(c.name)] });
+    return rows.map((r) => ({ ...r, displayOrder: r.displayOrder ?? 0 }));
   } catch {
     return [];
   }

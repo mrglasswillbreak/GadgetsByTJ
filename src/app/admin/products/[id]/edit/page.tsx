@@ -12,7 +12,8 @@ export const metadata: Metadata = {
 
 async function getCategories(): Promise<Category[]> {
   try {
-    return await db.query.categories.findMany({ orderBy: (c, { asc }) => [asc(c.name)] });
+    const rows = await db.query.categories.findMany({ orderBy: (c, { asc }) => [asc(c.name)] });
+    return rows.map((r) => ({ ...r, displayOrder: r.displayOrder ?? 0 }));
   } catch {
     return [];
   }
@@ -45,7 +46,18 @@ export default async function EditProductPage({ params }: { params: { id: string
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-semibold text-gray-900">Edit Product</h2>
-      <ProductForm initialData={product} categories={categories} productId={id} />
+      <ProductForm
+        initialData={{
+          ...product,
+          images: product.images ?? [],
+          specs: product.specs ?? {},
+          inStock: product.inStock ?? true,
+          featured: product.featured ?? false,
+          displayOrder: product.displayOrder ?? 0,
+        }}
+        categories={categories}
+        productId={id}
+      />
     </div>
   );
 }

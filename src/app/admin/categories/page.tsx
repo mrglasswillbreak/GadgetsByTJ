@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { db } from '@/lib/db';
-import { categories } from '@/lib/db/schema';
-import { eq } from 'drizzle-orm';
 
 export const metadata: Metadata = {
   title: 'Categories — GadgetsByTJ Admin',

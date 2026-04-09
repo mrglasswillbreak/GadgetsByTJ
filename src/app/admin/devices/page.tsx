@@ -16,7 +16,7 @@ async function getDevices() {
 
 export default async function DevicesPage() {
   const devs = await getDevices();
-  const deviceTypes = [...new Set(devs.map((d) => d.deviceType))];
+  const deviceTypes = Array.from(new Set(devs.map((d) => d.deviceType)));
 
   return (
     <div className="space-y-6">

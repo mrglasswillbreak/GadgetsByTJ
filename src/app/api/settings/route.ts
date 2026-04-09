@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth/config';
 import { db } from '@/lib/db';
 import { siteSettings } from '@/lib/db/schema';
-import { eq } from 'drizzle-orm';
 import { SettingsBatchSchema } from '@/lib/validations';
 
 export async function GET() {
@@ -26,11 +25,11 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const parsed = SettingsBatchSchema.safeParse(body);
     if (!parsed.success) {
-      return NextResponse.json({ error: parsed.error.errors[0]?.message ?? 'Validation error' }, { status: 400 });
+      return NextResponse.json({ error: parsed.error.issues[0]?.message ?? 'Validation error' }, { status: 400 });
     }
 
     const { settings } = parsed.data;
-    for (const [key, value] of Object.entries(settings)) {
+    for (const [key, value] of Object.entries(settings) as [string, string][]) {
       await db
         .insert(siteSettings)
         .values({ key, value, updatedAt: new Date() })
