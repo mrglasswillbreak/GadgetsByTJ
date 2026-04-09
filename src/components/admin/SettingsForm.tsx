@@ -151,7 +151,7 @@ export default function SettingsForm({ initial }: SettingsFormProps) {
             <label className="block text-sm font-medium text-gray-700 mb-1">Logo Upload</label>
             <label className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm cursor-pointer hover:bg-gray-100 min-h-[44px]">
               {logoUploading ? 'Uploading…' : 'Choose logo file'}
-              <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" aria-label="Upload logo" />
+              <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" id="logo-file-input" />
             </label>
           </div>
           <Field label="Or enter Logo URL" id="logo_url" type="url" value={values['logo_url'] ?? ''} onChange={(v) => set('logo_url', v)} placeholder="https://…" />

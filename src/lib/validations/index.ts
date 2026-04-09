@@ -6,7 +6,7 @@ export const ProductSchema = z.object({
   description: z.string().nullable().optional(),
   price: z.string().nullable().optional(),
   categoryId: z.number().int().nullable().optional(),
-  imageUrl: z.string().url().nullable().optional(),
+  imageUrl: z.string().url().or(z.literal('')).nullable().optional(),
   images: z.array(z.string().url()).optional(),
   specs: z.record(z.string(), z.string()).optional(),
   inStock: z.boolean().optional(),
@@ -18,7 +18,7 @@ export const CategorySchema = z.object({
   name: z.string().min(1, 'Name is required'),
   slug: z.string().min(1, 'Slug is required'),
   description: z.string().nullable().optional(),
-  imageUrl: z.string().url().nullable().optional(),
+  imageUrl: z.string().url().or(z.literal('')).nullable().optional(),
   displayOrder: z.number().int().optional(),
 });
 
@@ -28,7 +28,7 @@ export const DeviceSchema = z.object({
   brand: z.string().nullable().optional(),
   deviceType: z.string().min(1, 'Device type is required'),
   description: z.string().nullable().optional(),
-  imageUrl: z.string().url().nullable().optional(),
+  imageUrl: z.string().url().or(z.literal('')).nullable().optional(),
   specs: z.record(z.string(), z.string()).optional(),
   featured: z.boolean().optional(),
   displayOrder: z.number().int().optional(),

@@ -35,10 +35,8 @@ function useSSRSafeInView(ref: RefObject<HTMLElement>): boolean {
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || typeof IntersectionObserver === 'undefined') {
-      setIsInView(true);
-      return;
-    }
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

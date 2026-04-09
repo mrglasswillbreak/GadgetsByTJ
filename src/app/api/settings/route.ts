@@ -29,12 +29,15 @@ export async function POST(req: NextRequest) {
     }
 
     const { settings } = parsed.data;
-    for (const [key, value] of Object.entries(settings) as [string, string][]) {
-      await db
-        .insert(siteSettings)
-        .values({ key, value, updatedAt: new Date() })
-        .onConflictDoUpdate({ target: siteSettings.key, set: { value, updatedAt: new Date() } });
-    }
+    const entries = Object.entries(settings) as [string, string][];
+    await db.transaction(async (tx) => {
+      for (const [key, value] of entries) {
+        await tx
+          .insert(siteSettings)
+          .values({ key, value, updatedAt: new Date() })
+          .onConflictDoUpdate({ target: siteSettings.key, set: { value, updatedAt: new Date() } });
+      }
+    });
 
     return NextResponse.json({ success: true });
   } catch (err) {

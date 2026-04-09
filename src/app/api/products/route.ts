@@ -11,11 +11,11 @@ export async function GET(req: NextRequest) {
 
     const allProducts = await db.query.products.findMany({
       orderBy: (p, { asc }) => [asc(p.displayOrder), asc(p.name)],
-      with: { category: true } as never,
-    });
+      with: { category: true },
+    }) as (typeof import('@/lib/db/schema').products.$inferSelect & { category: typeof import('@/lib/db/schema').categories.$inferSelect | null })[];
 
     const filtered = category
-      ? allProducts.filter((p: Record<string, unknown> & { category?: { slug?: string } | null }) => p.category?.slug === category)
+      ? allProducts.filter((p) => p.category?.slug === category)
       : allProducts;
 
     return NextResponse.json(filtered);
