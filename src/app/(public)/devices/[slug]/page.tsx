@@ -41,8 +41,6 @@ export default async function DeviceDetailPage({ params }: { params: Promise<{ s
 
   const images = [
     { src: device.image, alt: device.name },
-    { src: '', alt: `${device.name} detail view` },
-    { src: '', alt: `${device.name} side view` },
   ];
 
   return (

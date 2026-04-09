@@ -27,9 +27,20 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Prevent flash of unstyled content (FOUC) by applying dark mode class before React hydrates */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&d)){document.documentElement.classList.add('dark')}}catch(e){}})();`,
+            __html: [
+              '(function(){',
+              '  try {',
+              "    var t = localStorage.getItem('theme');",
+              "    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;",
+              "    if (t === 'dark' || (t === null && prefersDark)) {",
+              "      document.documentElement.classList.add('dark');",
+              '    }',
+              '  } catch(e) {}',
+              '})();',
+            ].join('\n'),
           }}
         />
       </head>
