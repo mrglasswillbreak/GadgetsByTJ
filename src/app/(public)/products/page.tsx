@@ -15,7 +15,7 @@ const products = [
   { id: 12, name: 'Samsung Galaxy Tab S9', price: '$699.99', category: 'Tablets', slug: 'samsung-galaxy-tab-s9', emoji: '💻' },
 ];
 
-const categories = [...new Set(products.map((p) => p.category))];
+const categories = Array.from(new Set(products.map((p) => p.category)));
 
 export default function ProductsPage() {
   return (

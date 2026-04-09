@@ -1,9 +1,9 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef, ReactNode } from 'react';
+import { motion, type Variants } from 'framer-motion';
+import { useRef, ReactNode, useState, useEffect, RefObject } from 'react';
 
-export const fadeInUp = {
+export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
@@ -12,7 +12,7 @@ export const fadeInUp = {
   },
 };
 
-export const fadeIn = {
+export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -20,7 +20,7 @@ export const fadeIn = {
   },
 };
 
-export const staggerContainer = {
+export const staggerContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -30,6 +30,31 @@ export const staggerContainer = {
   },
 };
 
+function useSSRSafeInView(ref: RefObject<Element>): boolean {
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setIsInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '-50px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [ref]);
+
+  return isInView;
+}
+
 interface FadeInWhenVisibleProps {
   children: ReactNode;
   className?: string;
@@ -37,8 +62,8 @@ interface FadeInWhenVisibleProps {
 }
 
 export function FadeInWhenVisible({ children, className, delay = 0 }: FadeInWhenVisibleProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useSSRSafeInView(ref as RefObject<Element>);
 
   return (
     <motion.div
@@ -66,8 +91,8 @@ interface StaggerChildrenProps {
 }
 
 export function StaggerChildren({ children, className }: StaggerChildrenProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useSSRSafeInView(ref as RefObject<Element>);
 
   return (
     <motion.div
