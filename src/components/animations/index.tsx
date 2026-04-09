@@ -30,7 +30,7 @@ export const staggerContainer: Variants = {
   },
 };
 
-function useSSRSafeInView(ref: RefObject<Element>): boolean {
+function useSSRSafeInView(ref: RefObject<HTMLElement>): boolean {
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ interface FadeInWhenVisibleProps {
 
 export function FadeInWhenVisible({ children, className, delay = 0 }: FadeInWhenVisibleProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useSSRSafeInView(ref as RefObject<Element>);
+  const isInView = useSSRSafeInView(ref);
 
   return (
     <motion.div
@@ -92,7 +92,7 @@ interface StaggerChildrenProps {
 
 export function StaggerChildren({ children, className }: StaggerChildrenProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useSSRSafeInView(ref as RefObject<Element>);
+  const isInView = useSSRSafeInView(ref);
 
   return (
     <motion.div
