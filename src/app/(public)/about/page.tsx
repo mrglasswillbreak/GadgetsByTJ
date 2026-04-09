@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { BadgeCheck, Lightbulb, Users, Rocket, Store } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Us — GadgetsByTJ',
@@ -14,10 +15,10 @@ const milestones = [
 ];
 
 const values = [
-  { emoji: '✅', title: 'Quality First', description: 'Every product in our catalog is carefully vetted for build quality, durability, and real-world performance.' },
-  { emoji: '💡', title: 'Expert Knowledge', description: 'Our team lives and breathes mobile tech. We can help you find exactly what you need for any device.' },
-  { emoji: '🤝', title: 'Customer-Centric', description: 'Your satisfaction is our top priority. We stand behind every product we sell with responsive support.' },
-  { emoji: '🚀', title: 'Always Innovating', description: 'We stay ahead of the latest tech trends so you always have access to the newest and best accessories.' },
+  { Icon: BadgeCheck, title: 'Quality First', description: 'Every product in our catalog is carefully vetted for build quality, durability, and real-world performance.', color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/30' },
+  { Icon: Lightbulb, title: 'Expert Knowledge', description: 'Our team lives and breathes mobile tech. We can help you find exactly what you need for any device.', color: 'text-yellow-600 dark:text-yellow-400', bg: 'bg-yellow-50 dark:bg-yellow-900/30' },
+  { Icon: Users, title: 'Customer-Centric', description: 'Your satisfaction is our top priority. We stand behind every product we sell with responsive support.', color: 'text-green-600 dark:text-green-400', bg: 'bg-green-50 dark:bg-green-900/30' },
+  { Icon: Rocket, title: 'Always Innovating', description: 'We stay ahead of the latest tech trends so you always have access to the newest and best accessories.', color: 'text-purple-600 dark:text-purple-400', bg: 'bg-purple-50 dark:bg-purple-900/30' },
 ];
 
 export default function AboutPage() {
@@ -26,7 +27,9 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="text-5xl mb-6">📱</div>
+          <div className="flex items-center justify-center w-20 h-20 bg-white/10 rounded-2xl mx-auto mb-6">
+            <Store className="w-10 h-10 text-white" aria-hidden="true" />
+          </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">About GadgetsByTJ</h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
             We&apos;re passionate about helping people get the most out of their mobile devices with premium accessories and expert advice.
@@ -35,40 +38,44 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-white dark:bg-gray-900">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Story</h2>
-              <p className="text-gray-600 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Story</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
                 GadgetsByTJ started with a simple idea: everyone deserves access to high-quality mobile accessories without breaking the bank. Founded by tech enthusiasts, we set out to curate the best products from trusted manufacturers worldwide.
               </p>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
                 What began as a small operation quickly grew as word spread about our commitment to quality and our knack for finding the perfect accessory for every device. Today, we carry hundreds of products across categories including cases, chargers, screen protectors, and audio gear.
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 We&apos;re not just a store — we&apos;re your tech-savvy friends who happen to have access to amazing products at great prices.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 text-center">
-              <div className="text-7xl mb-4">🏪</div>
-              <p className="text-2xl font-bold text-gray-900">GadgetsByTJ</p>
-              <p className="text-gray-500 mt-2">Your Premier Mobile Electronics Destination</p>
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-2xl p-8 text-center">
+              <div className="flex items-center justify-center w-20 h-20 bg-blue-600 rounded-2xl mx-auto mb-4">
+                <Store className="w-10 h-10 text-white" aria-hidden="true" />
+              </div>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">GadgetsByTJ</p>
+              <p className="text-gray-500 dark:text-gray-400 mt-2">Your Premier Mobile Electronics Destination</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Our Values</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-12">Our Values</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v) => (
-              <div key={v.title} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center">
-                <div className="text-4xl mb-3">{v.emoji}</div>
-                <h3 className="font-bold text-gray-900 mb-2">{v.title}</h3>
-                <p className="text-sm text-gray-500">{v.description}</p>
+              <div key={v.title} className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 text-center">
+                <div className={`${v.bg} w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-3`}>
+                  <v.Icon className={`w-7 h-7 ${v.color}`} aria-hidden="true" />
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white mb-2">{v.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{v.description}</p>
               </div>
             ))}
           </div>
@@ -76,9 +83,9 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-white dark:bg-gray-900">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Our Journey</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-12">Our Journey</h2>
           <div className="space-y-8">
             {milestones.map((m, i) => (
               <div key={i} className="flex gap-6">
@@ -86,12 +93,12 @@ export default function AboutPage() {
                   <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
                     {m.year.slice(2)}
                   </div>
-                  {i < milestones.length - 1 && <div className="w-0.5 flex-1 bg-blue-200 mt-2" />}
+                  {i < milestones.length - 1 && <div className="w-0.5 flex-1 bg-blue-200 dark:bg-blue-800 mt-2" />}
                 </div>
                 <div className="pb-8">
-                  <p className="text-sm font-semibold text-blue-600 mb-1">{m.year}</p>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{m.title}</h3>
-                  <p className="text-gray-500">{m.description}</p>
+                  <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-1">{m.year}</p>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{m.title}</h3>
+                  <p className="text-gray-500 dark:text-gray-400">{m.description}</p>
                 </div>
               </div>
             ))}
@@ -101,3 +108,4 @@ export default function AboutPage() {
     </div>
   );
 }
+

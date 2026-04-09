@@ -9,7 +9,7 @@ interface Product {
   price: string;
   category: string;
   slug: string;
-  emoji: string;
+  image?: string;
 }
 
 interface CategoryFilterProps {
@@ -32,7 +32,7 @@ export default function CategoryFilter({ products, categories }: CategoryFilterP
             className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
               selected === cat
                 ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-600 border border-gray-200 hover:border-blue-300 hover:text-blue-600'
+                : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:border-blue-300 hover:text-blue-600 dark:hover:text-blue-400'
             }`}
           >
             {cat}
@@ -56,3 +56,4 @@ export default function CategoryFilter({ products, categories }: CategoryFilterP
     </div>
   );
 }
+

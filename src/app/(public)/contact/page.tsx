@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 const contactDetails = [
-  { icon: '📧', label: 'Email', value: 'hello@gadgetsbytj.com', href: 'mailto:hello@gadgetsbytj.com' },
-  { icon: '📞', label: 'Phone', value: '+1 (555) 000-0000', href: 'tel:+15550000000' },
-  { icon: '📍', label: 'Address', value: '123 Main St, City, State 00000', href: null },
+  { Icon: Mail, label: 'Email', value: 'hello@gadgetsbytj.com', href: 'mailto:hello@gadgetsbytj.com' },
+  { Icon: Phone, label: 'Phone', value: '+1 (555) 000-0000', href: 'tel:+15550000000' },
+  { Icon: MapPin, label: 'Address', value: '123 Main St, City, State 00000', href: null },
 ];
 
 export default function ContactPage() {
@@ -35,13 +36,13 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Get in Touch</h2>
-              <p className="text-gray-500">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Get in Touch</h2>
+              <p className="text-gray-500 dark:text-gray-400">
                 Whether you have a question about our products, need help with an order, or just want to say hello — we&apos;re here for you.
               </p>
             </div>
@@ -49,26 +50,29 @@ export default function ContactPage() {
             <div className="space-y-4">
               {contactDetails.map((detail) => (
                 <div key={detail.label} className="flex items-start gap-4">
-                  <div className="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0 text-xl">
-                    {detail.icon}
+                  <div className="w-11 h-11 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <detail.Icon className="w-5 h-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-gray-600">{detail.label}</p>
+                    <p className="text-sm font-semibold text-gray-600 dark:text-gray-300">{detail.label}</p>
                     {detail.href ? (
-                      <a href={detail.href} className="text-blue-600 hover:text-blue-700 font-medium">
+                      <a href={detail.href} className="text-blue-600 dark:text-blue-400 hover:text-blue-700 font-medium">
                         {detail.value}
                       </a>
                     ) : (
-                      <p className="text-gray-700">{detail.value}</p>
+                      <p className="text-gray-700 dark:text-gray-300">{detail.value}</p>
                     )}
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
-              <h3 className="font-bold text-gray-900 mb-2">⏰ Hours of Operation</h3>
-              <div className="space-y-1 text-sm text-gray-600">
+            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-100 dark:border-blue-800">
+              <div className="flex items-center gap-2 mb-2">
+                <Clock className="w-5 h-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+                <h3 className="font-bold text-gray-900 dark:text-white">Hours of Operation</h3>
+              </div>
+              <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
                 <p>Monday – Friday: 9:00 AM – 6:00 PM</p>
                 <p>Saturday: 10:00 AM – 4:00 PM</p>
                 <p>Sunday: Closed</p>
@@ -77,16 +81,19 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">Send a Message</h2>
+          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-8">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Send a Message</h2>
 
             {status === 'sent' && (
-              <div role="status" className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-                ✅ Message sent! We&apos;ll get back to you soon.
+              <div role="status" className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-green-700 dark:text-green-400 text-sm flex items-center gap-2">
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Message sent! We&apos;ll get back to you soon.
               </div>
             )}
             {status === 'error' && (
-              <div role="alert" className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+              <div role="alert" className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400 text-sm">
                 Something went wrong. Please try again.
               </div>
             )}
@@ -94,7 +101,7 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name *</label>
                   <input
                     id="name"
                     type="text"
@@ -102,12 +109,12 @@ export default function ContactPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     aria-label="Your name"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm min-h-[44px]"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm min-h-[44px] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                     placeholder="Jane Smith"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email *</label>
                   <input
                     id="email"
                     type="email"
@@ -115,25 +122,25 @@ export default function ContactPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     aria-label="Your email address"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm min-h-[44px]"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm min-h-[44px] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                     placeholder="jane@example.com"
                   />
                 </div>
               </div>
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
                 <input
                   id="subject"
                   type="text"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                   aria-label="Message subject"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm min-h-[44px]"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm min-h-[44px] bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   placeholder="How can we help?"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message *</label>
                 <textarea
                   id="message"
                   required
@@ -141,7 +148,7 @@ export default function ContactPage() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   aria-label="Your message"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm resize-none"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm resize-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   placeholder="Tell us how we can help…"
                 />
               </div>
@@ -160,3 +167,4 @@ export default function ContactPage() {
     </div>
   );
 }
+
