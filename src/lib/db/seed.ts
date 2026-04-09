@@ -46,7 +46,7 @@ async function seed() {
       inStock: true,
       featured: true,
       displayOrder: 1,
-      specs: { material: 'Polycarbonate + TPU', compatibility: 'iPhone 15 Pro Max', magsafe: 'Yes', protection: 'Military Grade MIL-STD-810G' },
+      specs: { material: 'Polycarbonate + TPU', compatibility: 'iPhone 15 Pro Max', magsafe: 'Yes', protection: 'Military Grade MIL-STD-810G' } as Record<string, string>,
     },
     {
       name: 'Samsung Galaxy S24 Ultra Leather Case',
@@ -57,7 +57,7 @@ async function seed() {
       inStock: true,
       featured: true,
       displayOrder: 2,
-      specs: { material: 'Genuine Leather', compatibility: 'Samsung Galaxy S24 Ultra', slots: '3 Card Slots', feature: 'Kickstand' },
+      specs: { material: 'Genuine Leather', compatibility: 'Samsung Galaxy S24 Ultra', slots: '3 Card Slots', feature: 'Kickstand' } as Record<string, string>,
     },
     {
       name: '65W GaN Fast Charger',
@@ -68,7 +68,7 @@ async function seed() {
       inStock: true,
       featured: true,
       displayOrder: 1,
-      specs: { wattage: '65W', ports: '2x USB-C, 1x USB-A', technology: 'GaN III', compatibility: 'Universal' },
+      specs: { wattage: '65W', ports: '2x USB-C, 1x USB-A', technology: 'GaN III', compatibility: 'Universal' } as Record<string, string>,
     },
     {
       name: 'iPhone 15 Tempered Glass Screen Protector',
@@ -79,7 +79,7 @@ async function seed() {
       inStock: true,
       featured: false,
       displayOrder: 1,
-      specs: { hardness: '9H', compatibility: 'iPhone 15 / 15 Plus', pack: '2 Pack', coating: 'Oleophobic' },
+      specs: { hardness: '9H', compatibility: 'iPhone 15 / 15 Plus', pack: '2 Pack', coating: 'Oleophobic' } as Record<string, string>,
     },
     {
       name: 'Wireless Earbuds Pro',
@@ -90,7 +90,7 @@ async function seed() {
       inStock: true,
       featured: true,
       displayOrder: 1,
-      specs: { battery: '30 Hours (ANC Off)', anc: 'Active Noise Cancellation', waterproof: 'IPX5', connectivity: 'Bluetooth 5.3' },
+      specs: { battery: '30 Hours (ANC Off)', anc: 'Active Noise Cancellation', waterproof: 'IPX5', connectivity: 'Bluetooth 5.3' } as Record<string, string>,
     },
     {
       name: '6-in-1 USB-C Cable Bundle',
@@ -101,7 +101,7 @@ async function seed() {
       inStock: true,
       featured: false,
       displayOrder: 2,
-      specs: { quantity: '6 Cables', material: 'Braided Nylon', length: '1m each', compatibility: 'Universal' },
+      specs: { quantity: '6 Cables', material: 'Braided Nylon', length: '1m each', compatibility: 'Universal' } as Record<string, string>,
     },
   ];
 
@@ -118,7 +118,7 @@ async function seed() {
       description: 'Apple\'s most powerful iPhone with A17 Pro chip and titanium design.',
       featured: true,
       displayOrder: 1,
-      specs: { display: '6.1" Super Retina XDR OLED', chip: 'A17 Pro', storage: '128GB - 1TB', camera: '48MP Main + 12MP Ultra Wide + 12MP Telephoto', battery: 'Up to 23 hours', os: 'iOS 17' },
+      specs: { display: '6.1" Super Retina XDR OLED', chip: 'A17 Pro', storage: '128GB - 1TB', camera: '48MP Main + 12MP Ultra Wide + 12MP Telephoto', battery: 'Up to 23 hours', os: 'iOS 17' } as Record<string, string>,
     },
     {
       name: 'Samsung Galaxy S24',
@@ -128,7 +128,7 @@ async function seed() {
       description: 'Samsung\'s flagship with Galaxy AI features and Snapdragon 8 Gen 3.',
       featured: true,
       displayOrder: 2,
-      specs: { display: '6.2" Dynamic AMOLED 2X 120Hz', chip: 'Snapdragon 8 Gen 3', storage: '128GB - 512GB', camera: '50MP Main + 12MP Ultra Wide + 10MP Telephoto', battery: '4000mAh', os: 'Android 14 (One UI 6.1)' },
+      specs: { display: '6.2" Dynamic AMOLED 2X 120Hz', chip: 'Snapdragon 8 Gen 3', storage: '128GB - 512GB', camera: '50MP Main + 12MP Ultra Wide + 10MP Telephoto', battery: '4000mAh', os: 'Android 14 (One UI 6.1)' } as Record<string, string>,
     },
     {
       name: 'iPad Pro 12.9"',
@@ -138,7 +138,7 @@ async function seed() {
       description: 'The ultimate iPad experience with M2 chip and Liquid Retina XDR display.',
       featured: true,
       displayOrder: 3,
-      specs: { display: '12.9" Liquid Retina XDR', chip: 'Apple M2', storage: '128GB - 2TB', pencil: 'Apple Pencil 2nd gen compatible', battery: 'Up to 10 hours', os: 'iPadOS 17' },
+      specs: { display: '12.9" Liquid Retina XDR', chip: 'Apple M2', storage: '128GB - 2TB', pencil: 'Apple Pencil 2nd gen compatible', battery: 'Up to 10 hours', os: 'iPadOS 17' } as Record<string, string>,
     },
     {
       name: 'Samsung Galaxy Tab S9',
@@ -148,7 +148,7 @@ async function seed() {
       description: 'Premium Android tablet with Dynamic AMOLED display and S Pen included.',
       featured: false,
       displayOrder: 4,
-      specs: { display: '11" Dynamic AMOLED 2X 120Hz', chip: 'Snapdragon 8 Gen 2', storage: '128GB - 256GB', spen: 'Included', battery: '8400mAh', os: 'Android 13 (One UI 5.1)' },
+      specs: { display: '11" Dynamic AMOLED 2X 120Hz', chip: 'Snapdragon 8 Gen 2', storage: '128GB - 256GB', spen: 'Included', battery: '8400mAh', os: 'Android 13 (One UI 5.1)' } as Record<string, string>,
     },
   ];
 
