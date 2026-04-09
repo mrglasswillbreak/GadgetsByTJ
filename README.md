@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GadgetsByTJ
+
+Your premier destination for mobile electronics and accessories. Built with Next.js 14 App Router.
+
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animation**: Framer Motion
+- **Database**: Drizzle ORM + Neon PostgreSQL
+- **Auth**: NextAuth v5 beta (Credentials provider)
+- **File Storage**: Vercel Blob
+- **Validation**: Zod
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Set up environment variables
+
+Create a `.env.local` file at the project root:
+
+```env
+# Neon PostgreSQL connection string
+DATABASE_URL=postgresql://user:password@host/dbname?sslmode=require
+
+# NextAuth secret (generate with: openssl rand -base64 32)
+AUTH_SECRET=your-secret-here
+
+# Vercel Blob token (from Vercel dashboard)
+BLOB_READ_WRITE_TOKEN=your-blob-token-here
+```
+
+### 3. Run database migrations
+
+```bash
+npx drizzle-kit push
+```
+
+### 4. Create the first admin user
+
+Run the following in a Node.js REPL or a setup script to seed an admin:
+
+```typescript
+import bcrypt from 'bcryptjs';
+import { db } from './src/lib/db';
+import { admins } from './src/lib/db/schema';
+
+const hash = await bcrypt.hash('your-password', 12);
+await db.insert(admins).values({ email: 'admin@example.com', passwordHash: hash });
+```
+
+### 5. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the public site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Admin panel: [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+src/
+├── app/
+│   ├── (public)/          # Public-facing pages (home, products, devices, about, contact)
+│   ├── admin/             # Admin panel (dashboard, products, categories, devices, gallery, settings)
+│   └── api/               # API route handlers
+├── components/
+│   ├── admin/             # Admin UI components
+│   ├── animations/        # Framer Motion wrappers
+│   └── public/            # Public UI components
+└── lib/
+    ├── auth/              # NextAuth config
+    ├── blob/              # Vercel Blob helpers
+    ├── db/                # Drizzle ORM schema and client
+    └── validations/       # Zod schemas
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Admin Panel Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Dashboard**: Stats overview (products, devices, categories)
+- **Products**: Full CRUD with image upload, specifications editor
+- **Categories**: Full CRUD with image upload
+- **Devices**: Full CRUD with type filter and specifications editor
+- **Gallery**: Image gallery with upload and delete
+- **Settings**: Site-wide settings (general, hero, contact, social, appearance) with live preview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set the environment variables listed above in your Vercel project settings before deploying.
