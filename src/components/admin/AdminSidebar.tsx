@@ -2,14 +2,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { LayoutDashboard, Package, Tag, Smartphone, Images, Settings, Zap, type LucideIcon } from 'lucide-react';
 
-const navItems = [
-  { href: '/admin/dashboard', label: 'Dashboard', icon: '🏠' },
-  { href: '/admin/products', label: 'Products', icon: '📦' },
-  { href: '/admin/categories', label: 'Categories', icon: '🗂️' },
-  { href: '/admin/devices', label: 'Devices', icon: '📱' },
-  { href: '/admin/gallery', label: 'Gallery', icon: '🖼️' },
-  { href: '/admin/settings', label: 'Site Settings', icon: '⚙️' },
+const navItems: { href: string; label: string; Icon: LucideIcon }[] = [
+  { href: '/admin/dashboard', label: 'Dashboard', Icon: LayoutDashboard },
+  { href: '/admin/products', label: 'Products', Icon: Package },
+  { href: '/admin/categories', label: 'Categories', Icon: Tag },
+  { href: '/admin/devices', label: 'Devices', Icon: Smartphone },
+  { href: '/admin/gallery', label: 'Gallery', Icon: Images },
+  { href: '/admin/settings', label: 'Site Settings', Icon: Settings },
 ];
 
 interface AdminSidebarProps {
@@ -23,7 +24,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
   const sidebarContent = (
     <nav className="flex flex-col gap-1 p-4">
       <div className="flex items-center gap-2 px-3 py-4 mb-2 border-b border-gray-700">
-        <span className="text-2xl">📱</span>
+        <Zap className="w-6 h-6 text-yellow-400" aria-hidden="true" />
         <div>
           <p className="text-white font-bold text-sm">GadgetsByTJ</p>
           <p className="text-gray-400 text-xs">Admin Panel</p>
@@ -45,7 +46,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
                 : 'text-gray-300 hover:bg-gray-700 hover:text-white'
             }`}
           >
-            <span className="text-lg">{item.icon}</span>
+            <item.Icon className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
             <span>{item.label}</span>
           </Link>
         );
@@ -94,3 +95,4 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
     </>
   );
 }
+
