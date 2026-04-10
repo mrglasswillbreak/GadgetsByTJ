@@ -18,9 +18,9 @@ const devices = [
 ];
 
 const compatibleProducts = [
-  { id: 1, name: 'iPhone 15 Pro Case', price: '$19.99', category: 'Cases', slug: 'iphone-15-pro-case', image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&q=80' },
-  { id: 3, name: 'Tempered Glass Screen Protector', price: '$9.99', category: 'Screen Protectors', slug: 'tempered-glass-screen-protector', image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80' },
-  { id: 5, name: 'USB-C Fast Charger 65W', price: '$29.99', category: 'Chargers', slug: 'usbc-fast-charger-65w', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&q=80' },
+  { id: 1, name: 'iPhone 15 Pro Case', price: '$19.99', category: 'Cases', slug: 'iphone-15-pro-case', image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?q=80' },
+  { id: 3, name: 'Tempered Glass Screen Protector', price: '$9.99', category: 'Screen Protectors', slug: 'tempered-glass-screen-protector', image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80' },
+  { id: 5, name: 'USB-C Fast Charger 65W', price: '$29.99', category: 'Chargers', slug: 'usbc-fast-charger-65w', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80' },
 ];
 
 export default async function DeviceDetailPage({ params }: { params: Promise<{ slug: string }> }) {

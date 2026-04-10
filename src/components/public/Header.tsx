@@ -52,6 +52,8 @@ export default function Header() {
             {/* Dark mode toggle */}
             <button
               onClick={toggleTheme}
+              role="switch"
+              aria-checked={theme === 'dark'}
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >

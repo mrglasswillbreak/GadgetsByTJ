@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Check } from 'lucide-react';
 
 const contactDetails = [
   { Icon: Mail, label: 'Email', value: 'hello@gadgetsbytj.com', href: 'mailto:hello@gadgetsbytj.com' },
@@ -86,9 +86,7 @@ export default function ContactPage() {
 
             {status === 'sent' && (
               <div role="status" className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-green-700 dark:text-green-400 text-sm flex items-center gap-2">
-                <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
+                <Check className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
                 Message sent! We&apos;ll get back to you soon.
               </div>
             )}

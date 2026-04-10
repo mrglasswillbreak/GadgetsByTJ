@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Check } from 'lucide-react';
 
 const TABS = [
   { id: 'general', label: 'General' },
@@ -73,7 +74,7 @@ export default function SettingsForm({ initial }: SettingsFormProps) {
   return (
     <div className="space-y-6">
       {error && <div role="alert" className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">{error}</div>}
-      {saved && <div role="status" className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm flex items-center gap-2"><svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg> Settings saved successfully!</div>}
+      {saved && <div role="status" className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm flex items-center gap-2"><Check className="w-4 h-4 flex-shrink-0" aria-hidden="true" /> Settings saved successfully!</div>}
 
       {/* Tabs */}
       <div className="flex flex-wrap gap-1 border-b border-gray-200">

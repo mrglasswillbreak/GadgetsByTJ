@@ -11,9 +11,9 @@ const features = [
 ];
 
 const featuredPlaceholders = [
-  { Icon: Smartphone, label: 'iPhone 15 Pro', badge: 'Coming Soon', image: 'https://images.unsplash.com/photo-1697537980414-5c1f2d0cbf01?w=400&q=80', color: 'text-blue-500' },
-  { Icon: Tablet, label: 'iPad Air', badge: 'Coming Soon', image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&q=80', color: 'text-purple-500' },
-  { Icon: Headphones, label: 'AirPods Pro', badge: 'Coming Soon', image: 'https://images.unsplash.com/photo-1588423771073-b8903fead714?w=400&q=80', color: 'text-green-500' },
+  { Icon: Smartphone, label: 'iPhone 15 Pro', badge: 'Coming Soon', image: 'https://images.unsplash.com/photo-1697537980414-5c1f2d0cbf01?q=80', color: 'text-blue-500' },
+  { Icon: Tablet, label: 'iPad Air', badge: 'Coming Soon', image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80', color: 'text-purple-500' },
+  { Icon: Headphones, label: 'AirPods Pro', badge: 'Coming Soon', image: 'https://images.unsplash.com/photo-1588423771073-b8903fead714?q=80', color: 'text-green-500' },
 ];
 
 export default function HomePage() {
