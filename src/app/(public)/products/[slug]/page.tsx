@@ -27,7 +27,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Product Not Found</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-8">The product you&apos;re looking for doesn&apos;t exist or has been removed.</p>
-        <Link href="/products" className="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+        <Link href="/products" className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-blue-900/20 transition-all duration-200 hover:-translate-y-0.5">
           Back to Products
         </Link>
       </div>

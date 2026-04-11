@@ -187,7 +187,7 @@ export default function ContactPage() {
                   type="submit"
                   disabled={status === 'sending'}
                   aria-label="Send message"
-                  className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 disabled:opacity-60 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-blue-900/20 min-h-[44px]"
+                  className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 disabled:hover:from-blue-600 disabled:hover:to-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 disabled:hover:translate-y-0 shadow-lg shadow-blue-900/20 disabled:shadow-none min-h-[44px]"
                 >
                   {status === 'sending' ? 'Sending…' : 'Send Message'}
                 </button>
