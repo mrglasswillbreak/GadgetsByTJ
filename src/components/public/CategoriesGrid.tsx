@@ -71,7 +71,7 @@ export default function CategoriesGrid() {
                 src={cat.image}
                 alt={cat.name}
                 fill
-                sizes="(max-width: 640px) 50vw, 33vw"
+                sizes="(max-width: 767px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               {/* Gradient overlay */}

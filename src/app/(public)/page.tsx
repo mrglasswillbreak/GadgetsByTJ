@@ -10,21 +10,21 @@ const features = [
     title: 'Quality Products',
     description: 'Every product is carefully sourced and vetted for quality, durability, and performance.',
     image: 'https://images.unsplash.com/photo-1526406915894-7bcd65f60845?w=800&q=80',
-    accent: 'from-blue-900/80 to-blue-700/60',
+    accent: 'from-blue-900/80',
   },
   {
     Icon: Truck,
     title: 'Fast Shipping',
     description: 'Get your gadgets delivered quickly with our reliable and speedy shipping options.',
     image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=800&q=80',
-    accent: 'from-emerald-900/80 to-emerald-700/60',
+    accent: 'from-emerald-900/80',
   },
   {
     Icon: HeadphonesIcon,
     title: 'Expert Support',
     description: 'Our knowledgeable team is here to help you find the perfect device or accessory.',
     image: 'https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=800&q=80',
-    accent: 'from-purple-900/80 to-purple-700/60',
+    accent: 'from-purple-900/80',
   },
 ];
 

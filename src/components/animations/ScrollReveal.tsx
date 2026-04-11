@@ -38,10 +38,10 @@ export default function ScrollReveal({
   }, []);
 
   const directionVariants: Record<string, { x?: number; y?: number }> = {
-    up: { y: 30 },
-    down: { y: -30 },
-    left: { x: 30 },
-    right: { x: -30 },
+    up: { y: 20 },
+    down: { y: -20 },
+    left: { x: 20 },
+    right: { x: -20 },
     none: {},
   };
 
