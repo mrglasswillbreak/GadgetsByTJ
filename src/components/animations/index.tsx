@@ -4,11 +4,12 @@ import { motion, type Variants } from 'framer-motion';
 import { useRef, ReactNode, useState, useEffect, RefObject } from 'react';
 
 export const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20, scale: 0.97 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    scale: 1,
+    transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] },
   },
 };
 
@@ -16,7 +17,7 @@ export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] },
   },
 };
 
@@ -24,8 +25,8 @@ export const staggerContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
     },
   },
 };
@@ -69,11 +70,12 @@ export function FadeInWhenVisible({ children, className, delay = 0 }: FadeInWhen
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       variants={{
-        hidden: { opacity: 0, y: 30 },
+        hidden: { opacity: 0, y: 20, scale: 0.97 },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.6, ease: 'easeOut', delay },
+          scale: 1,
+          transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94], delay },
         },
       }}
       className={className}

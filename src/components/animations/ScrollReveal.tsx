@@ -50,7 +50,7 @@ export default function ScrollReveal({
       ref={ref}
       initial={{ opacity: 0, ...directionVariants[direction] }}
       animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, ...directionVariants[direction] }}
-      transition={{ duration: 0.6, ease: 'easeOut', delay }}
+      transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94], delay }}
       className={className}
     >
       {children}
