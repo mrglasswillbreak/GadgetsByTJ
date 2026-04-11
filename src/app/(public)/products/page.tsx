@@ -1,4 +1,5 @@
 import CategoryFilter from '@/components/public/CategoryFilter';
+import { FadeInWhenVisible } from '@/components/animations';
 
 const products = [
   { id: 1, name: 'iPhone 15 Pro Case', price: '$19.99', category: 'Cases', slug: 'iphone-15-pro-case', image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?q=80' },
@@ -20,12 +21,15 @@ const categories = Array.from(new Set(products.map((p) => p.category)));
 export default function ProductsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="mb-10">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">Our Products</h1>
-        <p className="text-gray-600 dark:text-gray-400 max-w-2xl">
-          Browse our full range of premium mobile electronics and accessories — from flagship phones to everyday essentials.
-        </p>
-      </div>
+      <FadeInWhenVisible>
+        <div className="mb-10">
+          <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-widest mb-3">Catalog</p>
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">Our Products</h1>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl">
+            Browse our full range of premium mobile electronics and accessories — from flagship phones to everyday essentials.
+          </p>
+        </div>
+      </FadeInWhenVisible>
       <CategoryFilter products={products} categories={categories} />
     </div>
   );

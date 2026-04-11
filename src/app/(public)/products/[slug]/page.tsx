@@ -25,9 +25,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   if (!product) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Product Not Found</h1>
-        <p className="text-gray-600 mb-8">The product you&apos;re looking for doesn&apos;t exist or has been removed.</p>
-        <Link href="/products" className="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Product Not Found</h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-8">The product you&apos;re looking for doesn&apos;t exist or has been removed.</p>
+        <Link href="/products" className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-blue-900/20 transition-all duration-200 hover:-translate-y-0.5">
           Back to Products
         </Link>
       </div>
@@ -45,12 +45,12 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8">
-        <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
+      <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8">
+        <Link href="/" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</Link>
         <span>/</span>
-        <Link href="/products" className="hover:text-blue-600 transition-colors">Products</Link>
+        <Link href="/products" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Products</Link>
         <span>/</span>
-        <span className="text-gray-900 font-medium">{product.name}</span>
+        <span className="text-gray-900 dark:text-white font-medium">{product.name}</span>
       </nav>
 
       {/* Product layout */}
@@ -63,29 +63,29 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         {/* Product info */}
         <FadeInWhenVisible delay={0.15}>
           <div>
-            <span className="inline-block bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full mb-4">
+            <span className="inline-block bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 text-sm font-medium px-3 py-1 rounded-full mb-4">
               {product.category}
             </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{product.name}</h1>
-            <p className="text-3xl font-bold text-blue-600 mb-6">{product.price}</p>
-            <p className="text-gray-600 leading-relaxed mb-8">{product.description}</p>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">{product.name}</h1>
+            <p className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-6">{product.price}</p>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">{product.description}</p>
 
             {/* Specs */}
-            <div className="bg-gray-50 rounded-xl p-6 mb-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Specifications</h2>
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-8">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Specifications</h2>
               <table className="w-full text-sm">
                 <tbody>
                   {Object.entries(product.specs).map(([key, value]) => (
-                    <tr key={key} className="border-b border-gray-200 last:border-0">
-                      <td className="py-2 pr-4 font-medium text-gray-700 w-1/2">{key}</td>
-                      <td className="py-2 text-gray-600">{value}</td>
+                    <tr key={key} className="border-b border-gray-200 dark:border-gray-700 last:border-0">
+                      <td className="py-2 pr-4 font-medium text-gray-700 dark:text-gray-300 w-1/2">{key}</td>
+                      <td className="py-2 text-gray-600 dark:text-gray-400">{value}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
 
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-xl transition-colors text-lg">
+            <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-blue-900/20 text-lg">
               Add to Cart
             </button>
           </div>
@@ -96,7 +96,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
       {related.length > 0 && (
         <section>
           <FadeInWhenVisible>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Related Products</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Related Products</h2>
           </FadeInWhenVisible>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {related.map((p, i) => (
