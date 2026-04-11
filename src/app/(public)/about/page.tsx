@@ -101,7 +101,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-950">
+      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-6xl mx-auto">
           <FadeInWhenVisible>
             <div className="text-center mb-12">
