@@ -39,7 +39,7 @@ BLOB_READ_WRITE_TOKEN=your-blob-token-here
 ### 3. Run database migrations
 
 ```bash
-npx drizzle-kit push
+npm run db:migrate
 ```
 
 ### 4. Seed the database (sample data + first admin)
