@@ -39,16 +39,25 @@ BLOB_READ_WRITE_TOKEN=your-blob-token-here
 ### 3. Run database migrations
 
 ```bash
-npx drizzle-kit push
+npm run db:migrate
 ```
 
 ### 4. Seed the database (sample data + first admin)
 
-Set the admin credentials in env vars and run the seed script:
+Add your desired admin credentials to `.env.local`:
+
+```env
+SEED_ADMIN_EMAIL=admin@example.com
+SEED_ADMIN_PASSWORD=yourpassword
+```
+
+Then run:
 
 ```bash
-SEED_ADMIN_EMAIL=admin@example.com SEED_ADMIN_PASSWORD=yourpassword npx tsx src/lib/db/seed.ts
+npm run db:seed
 ```
+
+> **Deploying to Vercel?** Run the seed command locally while your `DATABASE_URL` in `.env.local` points to your production Neon database. Vercel is serverless and cannot run one-off scripts, so the seed must be executed from your local machine against the live database URL.
 
 ### 5. Start the development server
 
@@ -91,10 +100,12 @@ src/
 ## Scripts
 
 ```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run start    # Start production server
-npm run lint     # Run ESLint
+npm run dev         # Start development server
+npm run build       # Build for production
+npm run start       # Start production server
+npm run lint        # Run ESLint
+npm run db:migrate  # Push schema changes to the database (drizzle-kit push)
+npm run db:seed     # Seed database with sample data and first admin
 ```
 
 ## Deploy on Vercel
